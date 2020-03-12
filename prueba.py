@@ -23,5 +23,7 @@ for elem in data:
         parent_node = nodes[i][key]
         parent_node_name = val
 
-for node in nodes:
-    print(node)
+# for node in nodes:
+#     print(node)
+print()
+print(nodes[0]["a"])
