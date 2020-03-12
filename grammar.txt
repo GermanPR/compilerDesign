@@ -1,0 +1,11 @@
+formulae -> (formulae connective formulae) | not formulae | (term equal term) | predicate | quantifier var formulae | term
+
+connective -> and | or | implies | iff
+not -> "neg"
+term -> var | cons
+
+var -> x|y..
+cons -> A|B ..
+
+
+
