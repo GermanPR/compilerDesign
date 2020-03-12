@@ -16,9 +16,9 @@ def elimWhite(formula, index):
     
 def expandFormula(formula, index, terminals, parent):
     # case (term eq term) | (form connec form)
-    form = parent
+    form = Node(str(index),parent=parent, display_name="formula")
     if formula[index] == "(":
-        parenth = Node("(",parent=form)
+        parenth = Node(str(index),parent=form,distplay_name = "(")
         print("parenthesis")
         startInd = index
         index += 1
@@ -132,7 +132,7 @@ def expandTerm(formula, index, terminals, parent):
     for term in terminals[0]+terminals[1]:
         if term == formula[index:index+len(term)]:
             print(term)
-            trm = Node(term,parent=parent)
+            trm = Node(str(index+len(term)),parent=parent, display_name=term)
             return len(term)
     return 0
 
@@ -140,7 +140,7 @@ def expandEqual(formula, index, terminals,parent):
     term = terminals[4]
     if term == formula[index:index+len(term)]:
         print(term)
-        eq = Node(term,parent=parent)
+        eq = Node(str(index+len(term)),parent=parent, display_name=term)
         return len(term)
     return 0
 
@@ -149,7 +149,7 @@ def expandConnec(formula, index, terminals,parent):
         if term == formula[index:index+len(term)]:
             print("hey")
             print(term)
-            conn = Node(term,parent=parent)
+            conn = Node(str(index+len(term)),parent=parent, display_name=term)
             return len(term)
     return 0
 
@@ -157,7 +157,7 @@ def expandNeg(formula, index, terminals,parent):
     term = terminals[2]
     if term == formula[index:index+len(term)]:
         print(term)
-        neg = Node(term,parent=parent)
+        neg = Node(str(index+len(term)),parent=parent, display_name=term)
         return len(term)
     return 0
 
@@ -204,7 +204,7 @@ def expandQuantifier(formula, index, terminals,parent):
     for term in terminals[6]:
         if term == formula[index:index+len(term)]:
             print(term)
-            quan = Node(term,parent=parent)
+            quan = Node(str(index+len(term)),parent=parent, display_name=term)
             return len(term)
     return 0
 
@@ -344,8 +344,8 @@ formula1 = "A price E cost1 ( Same(cost1, price) AND ( NOT Non_zero(price) IFF (
 formula2 = "\\forall   x   (   \exists   y  ( (C=C) \implies   \\neg  (C=C)  )   \lor   \exists z ( ( (C = z) \land (C=C) ) \land (C=C) ) )"
 formula3 = "((C=x) \implies (x=C))"
 node = Node("Start")
-expandFormula(formula3, 0, terminals, node)
+expandFormula(formula2, 0, terminals, node)
 print()
-print(formula3)
-DotExporter(node).to_picture("node.png")
+print(formula2)
 print(RenderTree(node))
+#DotExporter(node).to_picture("node.png")

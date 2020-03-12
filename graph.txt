@@ -1,0 +1,21 @@
+digraph tree {
+    "a" [label="a"];
+    "ab" [label="b"];
+    "bc" [label="c"];
+    "bd" [label="d"];
+    "ae" [label="e"];
+    "ec" [label="c"];
+    "ad" [label="d"];
+    "dd" [label="d"];
+    "dc" [label="c"];
+    "cf" [label="f"];
+    "a" -> "ab";
+    "a" -> "ae";
+    "a" -> "ad";
+    "ab" -> "bc";
+    "ab" -> "bd";
+    "ae" -> "ec";
+    "ad" -> "dd";
+    "ad" -> "dc";
+    "dc" -> "cf";
+}
